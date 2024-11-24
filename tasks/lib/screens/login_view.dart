@@ -1,7 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
+import 'package:tasks/constants/routes.dart';
 import 'package:tasks/firebase_options.dart';
+import 'dart:developer' as devtools show log;
+
+import 'package:tasks/utilities/show_error_dialog.dart';
 
 class LoginView extends StatefulWidget {
   const LoginView({super.key});
@@ -63,20 +67,35 @@ class _LoginViewState extends State<LoginView> {
                   ),
                   TextButton(
                     onPressed: () async {
-                      final Email = email.text;
-                      final Password = password.text;
+                      final email_ = email.text;
+                      final password_ = password.text;
                       try {
-                        final userCredential = await FirebaseAuth.instance
-                            .signInWithEmailAndPassword(
-                                email: Email, password: Password);
-                        print(userCredential);
+                        await FirebaseAuth.instance.signInWithEmailAndPassword(
+                          email: email_,
+                          password: password_,
+                        );
+                        final user = FirebaseAuth.instance.currentUser;
+                        if (user?.emailVerified ?? false) {
+                          //user is verified
+                          Navigator.of(context).pushNamedAndRemoveUntil(
+                            tasksRoute,
+                            (route) => false,
+                          );
+                        } else {
+                          //user is not verified
+                          Navigator.of(context).pushNamedAndRemoveUntil(
+                              verificationRoute, (route) => false);
+                        }
                       } on FirebaseAuthException catch (e) {
                         if (e.code == 'invalid-email') {
-                          print('Enter the email');
+                          await showErrorDialog(
+                              context, 'Please enter your details');
                         } else if (e.code == 'invalid-credential') {
-                          print('Invalid credentials');
+                          await showErrorDialog(
+                              context, 'Invalid credentials, user not found.');
                         } else if (e.code == 'missing-password') {
-                          print('Missing password');
+                          await showErrorDialog(
+                              context, 'Enter your password.');
                         }
                       }
                     },
@@ -85,7 +104,7 @@ class _LoginViewState extends State<LoginView> {
                   TextButton(
                       onPressed: () {
                         Navigator.of(context).pushNamedAndRemoveUntil(
-                          '/register/',
+                          registerRoute,
                           (route) => false,
                         );
                       },

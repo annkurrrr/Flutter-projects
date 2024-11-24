@@ -1,7 +1,10 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:tasks/constants/routes.dart';
 import 'package:tasks/firebase_options.dart';
+import 'package:tasks/utilities/show_error_dialog.dart';
+import 'dart:developer' as devtools show log;
 
 class RegistrationPage extends StatefulWidget {
   const RegistrationPage({super.key});
@@ -63,22 +66,30 @@ class _RegistrationPageState extends State<RegistrationPage> {
                   ),
                   TextButton(
                     onPressed: () async {
-                      final Email = email.text;
-                      final Password = password.text;
+                      final email_ = email.text;
+                      final password_ = password.text;
                       try {
-                        final userCredential = await FirebaseAuth.instance
+                        await FirebaseAuth.instance
                             .createUserWithEmailAndPassword(
-                                email: Email, password: Password);
-                        print(userCredential);
+                                email: email_, password: password_);
+                        final user = FirebaseAuth.instance.currentUser;
+                        await user?.sendEmailVerification();
+                        Navigator.of(context).pushNamed(
+                          verificationRoute,
+                        );
                       } on FirebaseAuthException catch (e) {
                         if (e.code == 'invalid-email') {
-                          print('The email address is not valid');
+                          await showErrorDialog(
+                              context, 'The email address is not valid');
                         } else if (e.code == 'missing-password') {
-                          print('please set a password');
+                          await showErrorDialog(
+                              context, 'please set a password');
                         } else if (e.code == 'weak-password') {
-                          print('Please enter a strong password');
+                          await showErrorDialog(
+                              context, 'Please enter a strong password');
                         } else if (e.code == 'email-already-in-use') {
-                          print('Email is already registered');
+                          await showErrorDialog(
+                              context, 'Email is already registered');
                         }
                       }
                     },
@@ -87,7 +98,7 @@ class _RegistrationPageState extends State<RegistrationPage> {
                   TextButton(
                       onPressed: () {
                         Navigator.of(context).pushNamedAndRemoveUntil(
-                          '/login/',
+                          loginRoute,
                           (route) => false,
                         );
                       },

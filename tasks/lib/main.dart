@@ -5,18 +5,22 @@ import 'package:tasks/firebase_options.dart';
 import 'package:tasks/screens/login_view.dart';
 import 'package:tasks/screens/signup.dart';
 import 'package:tasks/screens/verify_view.dart';
+import 'package:tasks/constants/routes.dart';
 import 'dart:developer' as devtools show log;
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
   runApp(
     MaterialApp(
+      debugShowCheckedModeBanner: false,
       title: 'My-Tasks',
       theme: ThemeData(primarySwatch: Colors.blue),
       home: const HomePage(),
       routes: {
-        '/login/': (context) => const LoginView(),
-        '/register/': (context) => const RegistrationPage(),
+        loginRoute: (context) => const LoginView(),
+        registerRoute: (context) => const RegistrationPage(),
+        tasksRoute: (context) => const Tasks(),
+        verificationRoute: (context) => const VerificationPage(),
       },
     ),
   );
@@ -79,7 +83,7 @@ class _TasksState extends State<Tasks> {
                   if (shouldLogout) {
                     FirebaseAuth.instance.signOut();
                     Navigator.of(context)
-                        .pushNamedAndRemoveUntil('/login/', (_) => false);
+                        .pushNamedAndRemoveUntil(loginRoute, (_) => false);
                   }
               }
             }, itemBuilder: (context) {
