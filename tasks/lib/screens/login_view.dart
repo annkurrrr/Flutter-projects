@@ -89,14 +89,18 @@ class _LoginViewState extends State<LoginView> {
                       } on FirebaseAuthException catch (e) {
                         if (e.code == 'invalid-email') {
                           await showErrorDialog(
-                              context, 'Please enter your details');
+                              context, 'Please enter your details correctly');
                         } else if (e.code == 'invalid-credential') {
                           await showErrorDialog(
                               context, 'Invalid credentials, user not found.');
                         } else if (e.code == 'missing-password') {
                           await showErrorDialog(
                               context, 'Enter your password.');
+                        } else {
+                          await showErrorDialog(context, 'Error: ${e.code}');
                         }
+                      } catch (e) {
+                        await showErrorDialog(context, e.toString());
                       }
                     },
                     child: const Text('Login'),
