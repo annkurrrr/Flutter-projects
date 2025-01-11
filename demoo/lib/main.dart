@@ -17,9 +17,16 @@ class MyApp extends StatelessWidget {
   }
 }
 
-class IdCard extends StatelessWidget {
+class IdCard extends StatefulWidget {
   const IdCard({super.key});
 
+  @override
+  State<IdCard> createState() => _IdCardState();
+}
+
+int credits = 40;
+
+class _IdCardState extends State<IdCard> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -36,6 +43,17 @@ class IdCard extends StatelessWidget {
           ),
         ),
         centerTitle: true,
+      ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {
+          setState(() {
+            credits += 1;
+          });
+        },
+        child: Icon(
+          CupertinoIcons.add,
+          color: Colors.grey[900],
+        ),
       ),
       body: Padding(
         padding: const EdgeInsets.fromLTRB(30.0, 40.0, 30.0, 0.0),
@@ -99,7 +117,25 @@ class IdCard extends StatelessWidget {
             ),
             const SizedBox(height: 5.0),
             Text(
-              'First',
+              'Second',
+              style: TextStyle(
+                fontSize: 20,
+                fontWeight: FontWeight.bold,
+                color: Colors.yellow[500],
+              ),
+            ),
+            const SizedBox(height: 40),
+            Text(
+              'No. of credits earned:',
+              style: TextStyle(
+                fontSize: 16,
+                fontWeight: FontWeight.bold,
+                color: Colors.grey[400],
+              ),
+            ),
+            const SizedBox(height: 5.0),
+            Text(
+              '$credits',
               style: TextStyle(
                 fontSize: 20,
                 fontWeight: FontWeight.bold,
