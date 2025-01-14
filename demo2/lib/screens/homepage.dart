@@ -1,3 +1,4 @@
+import 'package:demo2/auth/login.dart';
 import 'package:demo2/screens/profile.dart';
 import 'package:demo2/screens/settingspage.dart';
 import 'package:flutter/material.dart';
@@ -34,7 +35,10 @@ class HomePage extends StatelessWidget {
                 );
                 break;
               case 'Logout':
-                print('Logout');
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => const LoginPage()),
+                );
                 break;
             }
           }, itemBuilder: (BuildContext context) {
