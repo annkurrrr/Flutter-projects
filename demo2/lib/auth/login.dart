@@ -51,13 +51,13 @@ class LoginPage extends StatelessWidget {
             ),
             const SizedBox(height: 10.0),
             TextButton(
-              onPressed: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => const HomePage()),
-                );
-              },
-              child: Text('Login'),
+              onPressed: () {},
+              child: Text(
+                'Login',
+                style: TextStyle(
+                  color: Colors.grey[200],
+                ),
+              ),
             )
           ],
         ),
