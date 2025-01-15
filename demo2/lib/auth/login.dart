@@ -1,5 +1,4 @@
-import 'dart:io';
-
+import 'package:demo2/screens/homepage.dart';
 import 'package:flutter/material.dart';
 
 class LoginPage extends StatelessWidget {
@@ -19,6 +18,48 @@ class LoginPage extends StatelessWidget {
             fontWeight: FontWeight.w600,
             color: Colors.grey[200],
           ),
+        ),
+      ),
+      body: Center(
+        child: Column(
+          children: [
+            const SizedBox(height: 200.0),
+            TextField(
+              obscureText: false,
+              decoration: InputDecoration(
+                hintText: 'Enter your email here.',
+                hintStyle: TextStyle(
+                  color: Colors.grey[200],
+                ),
+              ),
+              style: TextStyle(
+                color: Colors.grey[250],
+              ),
+            ),
+            const SizedBox(height: 10.0),
+            TextField(
+              obscureText: true,
+              decoration: InputDecoration(
+                hintText: 'Enter your password here.',
+                hintStyle: TextStyle(
+                  color: Colors.grey[200],
+                ),
+              ),
+              style: TextStyle(
+                color: Colors.grey[250],
+              ),
+            ),
+            const SizedBox(height: 10.0),
+            TextButton(
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => const HomePage()),
+                );
+              },
+              child: Text('Login'),
+            )
+          ],
         ),
       ),
     );
