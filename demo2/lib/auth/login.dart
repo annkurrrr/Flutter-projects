@@ -21,45 +21,45 @@ class LoginPage extends StatelessWidget {
         ),
       ),
       body: Center(
-        child: Column(
-          children: [
-            const SizedBox(height: 200.0),
-            TextField(
-              obscureText: false,
-              decoration: InputDecoration(
-                hintText: 'Enter your email here.',
-                hintStyle: TextStyle(
-                  color: Colors.grey[200],
-                ),
-              ),
-              style: TextStyle(
-                color: Colors.grey[250],
-              ),
-            ),
-            const SizedBox(height: 10.0),
-            TextField(
-              obscureText: true,
-              decoration: InputDecoration(
-                hintText: 'Enter your password here.',
-                hintStyle: TextStyle(
-                  color: Colors.grey[200],
-                ),
-              ),
-              style: TextStyle(
-                color: Colors.grey[250],
-              ),
-            ),
-            const SizedBox(height: 10.0),
-            TextButton(
-              onPressed: () {},
-              child: Text(
-                'Login',
+        child: Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: Column(
+            children: [
+              const SizedBox(height: 200.0),
+              TextField(
                 style: TextStyle(
-                  color: Colors.grey[200],
+                  color: Colors.grey[250],
+                ),
+                obscureText: false,
+                decoration: InputDecoration(
+                  hintText: 'Enter your email here.',
+                  hintStyle: TextStyle(
+                    color: Colors.grey[200],
+                  ),
                 ),
               ),
-            )
-          ],
+              const SizedBox(height: 10.0),
+              TextField(
+                obscureText: true,
+                decoration: InputDecoration(
+                  hintText: 'Enter your password here.',
+                  hintStyle: TextStyle(
+                    color: Colors.grey[200],
+                  ),
+                ),
+              ),
+              const SizedBox(height: 10.0),
+              TextButton(
+                onPressed: () {},
+                child: Text(
+                  'Login',
+                  style: TextStyle(
+                    color: Colors.grey[200],
+                  ),
+                ),
+              )
+            ],
+          ),
         ),
       ),
     );
