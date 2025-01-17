@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "327567577449",
+    "project_id": "demo2-d5fe2",
+    "storage_bucket": "demo2-d5fe2.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:327567577449:android:434c45f7c8594be38e2df8",
+        "android_client_info": {
+          "package_name": "com.ankurkunde.demo2"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC0GhaRkJA2VgsxdGXAw3uLAr2kltMJAO4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
