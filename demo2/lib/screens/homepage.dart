@@ -11,11 +11,11 @@ class HomePage extends StatelessWidget {
     return Scaffold(
       backgroundColor: Colors.grey[800],
       appBar: AppBar(
-        backgroundColor: Colors.grey[900],
+        backgroundColor: Colors.grey[200],
         title: Text(
           'Home',
           style: TextStyle(
-            color: Colors.grey[800],
+            color: Colors.grey[900],
             fontWeight: FontWeight.bold,
             fontSize: 30.0,
           ),
