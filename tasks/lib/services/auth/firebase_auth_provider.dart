@@ -1,3 +1,4 @@
+import 'package:firebase_core/firebase_core.dart';
 import 'package:tasks/firebase_options.dart';
 import 'package:tasks/services/auth/auth_user.dart';
 import 'package:tasks/services/auth/auth_provider.dart';
@@ -98,7 +99,6 @@ class FirebaseAuthProvider implements AuthProvider {
     }
   }
 
-  @override
   Future<void> initialize() async {
     await Firebase.initializeApp(
       options: DefaultFirebaseOptions.currentPlatform,

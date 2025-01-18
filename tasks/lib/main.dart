@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:tasks/firebase_options.dart';
 import 'package:tasks/screens/login_view.dart';
 import 'package:tasks/screens/signup.dart';
-import 'package:tasks/screens/tasks_view.dart';
+import 'package:tasks/screens/homepage.dart';
 import 'package:tasks/screens/verify_view.dart';
 import 'package:tasks/constants/routes.dart';
 

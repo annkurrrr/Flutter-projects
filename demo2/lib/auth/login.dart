@@ -57,7 +57,7 @@ class _LoginPageState extends State<LoginPage> {
             ),
             const SizedBox(height: 10.0),
             TextButton(
-              onPressed: () {},
+              onPressed: () async {},
               child: Text(
                 'Login',
                 style: TextStyle(
