@@ -65,6 +65,9 @@ flutter:
     - images/indian.jpg
     - images/chinese.jpg
     - images/dessert.jpg
+    - images/pizza.jpg
+    - images/cheesecake.jpg
+    - images/pasta.jpg
   #   - images/a_dot_ham.jpeg
 
   # An image asset can refer to one or more resolution-specific "variants", see

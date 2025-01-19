@@ -56,6 +56,101 @@ class _HomeState extends State<Home> {
               ),
             ),
             SizedBox(height: 30.0),
+            Container(
+              height: 200,
+              width: MediaQuery.of(context).size.width,
+              child: Expanded(
+                child: ListView(
+                  scrollDirection: Axis.horizontal,
+                  children: [
+                    Container(
+                      margin: EdgeInsets.only(right: 15),
+                      child: Column(
+                        children: [
+                          ClipRRect(
+                            borderRadius: BorderRadius.circular(15.0),
+                            child: Image.asset(
+                              "images/soup.jpg",
+                              height: 140,
+                              width: 140,
+                              fit: BoxFit.cover,
+                            ),
+                          ),
+                          SizedBox(height: 7.0),
+                          Text(
+                            "Soup recipes",
+                            style: AppWidget.lightfieldtextstyle(),
+                          ),
+                        ],
+                      ),
+                    ),
+                    Container(
+                      margin: EdgeInsets.only(right: 15),
+                      child: Column(
+                        children: [
+                          ClipRRect(
+                            borderRadius: BorderRadius.circular(15.0),
+                            child: Image.asset(
+                              "images/Indian.jpg",
+                              height: 140,
+                              width: 140,
+                              fit: BoxFit.cover,
+                            ),
+                          ),
+                          SizedBox(height: 7.0),
+                          Text(
+                            "Indian recipes",
+                            style: AppWidget.lightfieldtextstyle(),
+                          ),
+                        ],
+                      ),
+                    ),
+                    Container(
+                      margin: EdgeInsets.only(right: 15),
+                      child: Column(
+                        children: [
+                          ClipRRect(
+                            borderRadius: BorderRadius.circular(15.0),
+                            child: Image.asset(
+                              "images/chinese.jpg",
+                              height: 140,
+                              width: 140,
+                              fit: BoxFit.cover,
+                            ),
+                          ),
+                          SizedBox(height: 7.0),
+                          Text(
+                            "Chinese recipes",
+                            style: AppWidget.lightfieldtextstyle(),
+                          ),
+                        ],
+                      ),
+                    ),
+                    Container(
+                      margin: EdgeInsets.only(right: 15),
+                      child: Column(
+                        children: [
+                          ClipRRect(
+                            borderRadius: BorderRadius.circular(15.0),
+                            child: Image.asset(
+                              "images/dessert.jpg",
+                              height: 140,
+                              width: 140,
+                              fit: BoxFit.cover,
+                            ),
+                          ),
+                          SizedBox(height: 7.0),
+                          Text(
+                            "Desserts",
+                            style: AppWidget.lightfieldtextstyle(),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            ),
             Expanded(
               child: ListView(
                 scrollDirection: Axis.horizontal,
@@ -67,16 +162,16 @@ class _HomeState extends State<Home> {
                         ClipRRect(
                           borderRadius: BorderRadius.circular(15.0),
                           child: Image.asset(
-                            "images/soup.jpg",
-                            height: 140,
-                            width: 140,
+                            "images/pizza.jpg",
+                            height: 275,
+                            width: 250,
                             fit: BoxFit.cover,
                           ),
                         ),
-                        SizedBox(height: 7.0),
+                        SizedBox(height: 10),
                         Text(
-                          "Soup recipes",
-                          style: AppWidget.lightfieldtextstyle(),
+                          "Margherita pizza",
+                          style: AppWidget.boldfieldtextstyle(),
                         ),
                       ],
                     ),
@@ -88,16 +183,16 @@ class _HomeState extends State<Home> {
                         ClipRRect(
                           borderRadius: BorderRadius.circular(15.0),
                           child: Image.asset(
-                            "images/Indian.jpg",
-                            height: 140,
-                            width: 140,
+                            "images/pasta.jpg",
+                            height: 275,
+                            width: 250,
                             fit: BoxFit.cover,
                           ),
                         ),
-                        SizedBox(height: 7.0),
+                        SizedBox(height: 10),
                         Text(
-                          "Indian recipes",
-                          style: AppWidget.lightfieldtextstyle(),
+                          "Pink sauce pasta",
+                          style: AppWidget.boldfieldtextstyle(),
                         ),
                       ],
                     ),
@@ -109,44 +204,23 @@ class _HomeState extends State<Home> {
                         ClipRRect(
                           borderRadius: BorderRadius.circular(15.0),
                           child: Image.asset(
-                            "images/chinese.jpg",
-                            height: 140,
-                            width: 140,
+                            "images/cheesecake.jpg",
+                            height: 275,
+                            width: 250,
                             fit: BoxFit.cover,
                           ),
                         ),
-                        SizedBox(height: 7.0),
+                        SizedBox(height: 10),
                         Text(
-                          "Chinese recipes",
-                          style: AppWidget.lightfieldtextstyle(),
-                        ),
-                      ],
-                    ),
-                  ),
-                  Container(
-                    margin: EdgeInsets.only(right: 15),
-                    child: Column(
-                      children: [
-                        ClipRRect(
-                          borderRadius: BorderRadius.circular(15.0),
-                          child: Image.asset(
-                            "images/dessert.jpg",
-                            height: 140,
-                            width: 140,
-                            fit: BoxFit.cover,
-                          ),
-                        ),
-                        SizedBox(height: 7.0),
-                        Text(
-                          "Desserts",
-                          style: AppWidget.lightfieldtextstyle(),
+                          "Philadelphia cheesecake",
+                          style: AppWidget.boldfieldtextstyle(),
                         ),
                       ],
                     ),
                   ),
                 ],
               ),
-            ),
+            )
           ],
         ),
       ),
