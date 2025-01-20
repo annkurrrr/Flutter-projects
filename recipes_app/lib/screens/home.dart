@@ -12,6 +12,14 @@ class _HomeState extends State<Home> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {},
+        backgroundColor: Colors.black,
+        child: Icon(
+          Icons.add,
+          color: Colors.grey[100],
+        ),
+      ),
       body: Container(
         margin: EdgeInsets.only(left: 20.0, top: 20.0),
         child: Column(
