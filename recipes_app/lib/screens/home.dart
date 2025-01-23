@@ -68,6 +68,7 @@ class _HomeState extends State<Home> {
               height: 200,
               width: MediaQuery.of(context).size.width,
               child: Expanded(
+                flex: 1,
                 child: ListView(
                   scrollDirection: Axis.horizontal,
                   children: [
@@ -99,7 +100,7 @@ class _HomeState extends State<Home> {
                           ClipRRect(
                             borderRadius: BorderRadius.circular(15.0),
                             child: Image.asset(
-                              "images/Indian.jpg",
+                              "images/indian.jpg",
                               height: 140,
                               width: 140,
                               fit: BoxFit.cover,
@@ -160,6 +161,7 @@ class _HomeState extends State<Home> {
               ),
             ),
             Expanded(
+              flex: 1,
               child: ListView(
                 scrollDirection: Axis.horizontal,
                 children: [
