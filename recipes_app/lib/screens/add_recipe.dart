@@ -85,13 +85,34 @@ class _AddRecipeState extends State<AddRecipe> {
                 borderRadius: BorderRadius.circular(20),
               ),
               child: TextField(
-                maxLines: 10,
+                maxLines: 8,
                 decoration: InputDecoration(
                   border: InputBorder.none,
-                  hintText: "Write your recipe name",
+                  hintText: "Write your recipe here",
+                  contentPadding: EdgeInsets.only(top: 12),
                 ),
               ),
             ),
+            SizedBox(height: 20),
+            Container(
+              margin: EdgeInsets.only(right: 20),
+              padding: EdgeInsets.only(top: 10, bottom: 10),
+              decoration: BoxDecoration(
+                color: Colors.black,
+                borderRadius: BorderRadius.circular(20),
+              ),
+              width: MediaQuery.of(context).size.width,
+              child: Center(
+                child: Text(
+                  "SAVE",
+                  style: TextStyle(
+                    fontSize: 20.0,
+                    fontWeight: FontWeight.bold,
+                    color: Colors.white,
+                  ),
+                ),
+              ),
+            )
           ],
         ),
       ),
