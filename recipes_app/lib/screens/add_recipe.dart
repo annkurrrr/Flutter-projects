@@ -1,4 +1,7 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
+import 'package:image_picker/image_picker.dart';
 import 'package:recipes_app/widgets/styles/support_widget.dart';
 
 class AddRecipe extends StatefulWidget {
@@ -9,6 +12,18 @@ class AddRecipe extends StatefulWidget {
 }
 
 class _AddRecipeState extends State<AddRecipe> {
+  File? selectedImage;
+  TextEditingController namecontroller = new TextEditingController();
+  TextEditingController detailcotroller = new TextEditingController();
+
+  final ImagePicker _picker = ImagePicker();
+
+  Future getImage() async {
+    var image = await _picker.pickImage(source: ImageSource.gallery);
+    selectedImage = File(image!.path);
+    setState(() {});
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -27,18 +42,47 @@ class _AddRecipeState extends State<AddRecipe> {
               ],
             ),
             SizedBox(height: 20),
-            Center(
-              child: Container(
-                width: 200,
-                height: 200,
-                decoration: BoxDecoration(
-                  color: Colors.white,
-                  borderRadius: BorderRadius.circular(100),
-                  border: Border.all(),
-                ),
-                child: Icon(Icons.camera_alt_outlined),
-              ),
-            ),
+            selectedImage != null
+                ? GestureDetector(
+                    onTap: () {
+                      getImage();
+                    },
+                    child: Center(
+                      child: Container(
+                        width: 200,
+                        height: 200,
+                        decoration: BoxDecoration(
+                          color: Colors.white,
+                          borderRadius: BorderRadius.circular(100),
+                          border: Border.all(),
+                        ),
+                        child: ClipRRect(
+                          borderRadius: BorderRadius.circular(10),
+                          child: Image.file(
+                            selectedImage!,
+                            fit: BoxFit.cover,
+                          ),
+                        ),
+                      ),
+                    ),
+                  )
+                : GestureDetector(
+                    onTap: () {
+                      getImage();
+                    },
+                    child: Center(
+                      child: Container(
+                        width: 200,
+                        height: 200,
+                        decoration: BoxDecoration(
+                          color: Colors.white,
+                          borderRadius: BorderRadius.circular(100),
+                          border: Border.all(),
+                        ),
+                        child: Icon(Icons.camera_alt_outlined),
+                      ),
+                    ),
+                  ),
             SizedBox(height: 15),
             Text(
               "Recipe name",
