@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:recipes_app/screens/add_recipe.dart';
 import 'package:recipes_app/screens/home.dart';
 
 void main() {
@@ -13,7 +14,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Recipes app',
       debugShowCheckedModeBanner: false,
-      home: Home(),
+      home: AddRecipe(),
     );
   }
 }

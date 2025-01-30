@@ -13,8 +13,8 @@ class AddRecipe extends StatefulWidget {
 
 class _AddRecipeState extends State<AddRecipe> {
   File? selectedImage;
-  TextEditingController namecontroller = new TextEditingController();
-  TextEditingController detailcotroller = new TextEditingController();
+  TextEditingController namecontroller = TextEditingController();
+  TextEditingController detailcotroller = TextEditingController();
 
   final ImagePicker _picker = ImagePicker();
 
