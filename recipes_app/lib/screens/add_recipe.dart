@@ -1,7 +1,9 @@
 import 'dart:io';
-
+import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:random_string/random_string.dart';
+import 'package:recipes_app/services/database.dart';
 import 'package:recipes_app/widgets/styles/support_widget.dart';
 
 class AddRecipe extends StatefulWidget {
@@ -14,7 +16,7 @@ class AddRecipe extends StatefulWidget {
 class _AddRecipeState extends State<AddRecipe> {
   File? selectedImage;
   TextEditingController namecontroller = TextEditingController();
-  TextEditingController detailcotroller = TextEditingController();
+  TextEditingController detailcontroller = TextEditingController();
 
   final ImagePicker _picker = ImagePicker();
 
@@ -22,6 +24,31 @@ class _AddRecipeState extends State<AddRecipe> {
     var image = await _picker.pickImage(source: ImageSource.gallery);
     selectedImage = File(image!.path);
     setState(() {});
+  }
+
+  uploadItem() async {
+    if (selectedImage != null &&
+        namecontroller.text != "" &&
+        detailcontroller.text != "") {
+      String addId = randomAlphaNumeric(10);
+
+      Reference firebaseStorageRef =
+          FirebaseStorage.instance.ref().child("blogImage").child(addId);
+      final UploadTask task = firebaseStorageRef.putFile(selectedImage!);
+      var downloadurl = await (await task).ref.getDownloadURL();
+      Map<String, dynamic> addrecipe = {
+        "Name": namecontroller.text,
+        "Detail": detailcontroller.text,
+        "Image": downloadurl,
+      };
+      DatabaseMethods().Addrecipe(addrecipe).then(
+        (value) {
+          namecontroller.text = "";
+          detailcontroller.text = "";
+          selectedImage = null;
+        },
+      );
+    }
   }
 
   @override
@@ -57,7 +84,7 @@ class _AddRecipeState extends State<AddRecipe> {
                           border: Border.all(),
                         ),
                         child: ClipRRect(
-                          borderRadius: BorderRadius.circular(10),
+                          borderRadius: BorderRadius.circular(100),
                           child: Image.file(
                             selectedImage!,
                             fit: BoxFit.cover,
@@ -102,6 +129,7 @@ class _AddRecipeState extends State<AddRecipe> {
                 borderRadius: BorderRadius.circular(20),
               ),
               child: TextField(
+                controller: namecontroller,
                 decoration: InputDecoration(
                   border: InputBorder.none,
                   suffixIcon: Icon(Icons.food_bank),
@@ -129,6 +157,7 @@ class _AddRecipeState extends State<AddRecipe> {
                 borderRadius: BorderRadius.circular(20),
               ),
               child: TextField(
+                controller: detailcontroller,
                 maxLines: 8,
                 decoration: InputDecoration(
                   border: InputBorder.none,
