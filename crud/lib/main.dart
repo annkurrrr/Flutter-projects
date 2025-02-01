@@ -1,24 +1,24 @@
+import 'package:crud/firebase_options.dart';
+import 'package:crud/pages/homepage.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
-import 'package:recipes_app/screens/add_recipe.dart';
-import 'package:recipes_app/screens/home.dart';
-import 'package:recipes_app/screens/recipe.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  await Firebase.initializeApp();
+  await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
   runApp(const MyApp());
 }
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
+  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Recipes app',
       debugShowCheckedModeBanner: false,
-      home: AddRecipe(),
+      title: 'CRUD',
+      home: HomePage(),
     );
   }
 }
