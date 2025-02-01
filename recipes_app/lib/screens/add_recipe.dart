@@ -167,21 +167,26 @@ class _AddRecipeState extends State<AddRecipe> {
               ),
             ),
             SizedBox(height: 20),
-            Container(
-              margin: EdgeInsets.only(right: 20),
-              padding: EdgeInsets.only(top: 10, bottom: 10),
-              decoration: BoxDecoration(
-                color: Colors.black,
-                borderRadius: BorderRadius.circular(20),
-              ),
-              width: MediaQuery.of(context).size.width,
-              child: Center(
-                child: Text(
-                  "SAVE",
-                  style: TextStyle(
-                    fontSize: 20.0,
-                    fontWeight: FontWeight.bold,
-                    color: Colors.white,
+            GestureDetector(
+              onTap: () {
+                uploadItem();
+              },
+              child: Container(
+                margin: EdgeInsets.only(right: 20),
+                padding: EdgeInsets.only(top: 10, bottom: 10),
+                decoration: BoxDecoration(
+                  color: Colors.black,
+                  borderRadius: BorderRadius.circular(20),
+                ),
+                width: MediaQuery.of(context).size.width,
+                child: Center(
+                  child: Text(
+                    "SAVE",
+                    style: TextStyle(
+                      fontSize: 20.0,
+                      fontWeight: FontWeight.bold,
+                      color: Colors.white,
+                    ),
                   ),
                 ),
               ),
