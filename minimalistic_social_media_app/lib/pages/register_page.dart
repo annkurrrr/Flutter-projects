@@ -3,20 +3,22 @@ import 'package:minimalistic_social_media_app/components/botton.dart';
 import 'package:minimalistic_social_media_app/components/textfield.dart';
 
 // ignore: must_be_immutable
-class LoginPage extends StatelessWidget {
+class RegisterPage extends StatelessWidget {
   final void Function()? onTap;
 
-  LoginPage({
+  RegisterPage({
     super.key,
     required this.onTap,
   });
 
   //text controllers
+  TextEditingController usernameController = TextEditingController();
   TextEditingController emailController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
+  TextEditingController confirmPasswordController = TextEditingController();
 
-  //login method
-  void login() {}
+  //register method
+  void register() {}
 
   @override
   Widget build(BuildContext context) {
@@ -46,6 +48,13 @@ class LoginPage extends StatelessWidget {
               ),
               SizedBox(height: 50),
 
+              //username field
+              MyTextField(
+                hintText: "Username",
+                obscureText: false,
+                controller: usernameController,
+              ),
+              SizedBox(height: 10),
               //email field
               MyTextField(
                 hintText: "Email",
@@ -56,25 +65,24 @@ class LoginPage extends StatelessWidget {
 
               //password field
               MyTextField(
-                hintText: "Password",
+                hintText: "Set password",
                 obscureText: true,
                 controller: passwordController,
               ),
               SizedBox(height: 10),
 
-              //forgot password
-              Text(
-                'Forgot password?',
-                style: TextStyle(
-                  color: Theme.of(context).colorScheme.inversePrimary,
-                ),
+              //re-enter password
+              MyTextField(
+                hintText: "Re-enter password",
+                obscureText: true,
+                controller: confirmPasswordController,
               ),
               SizedBox(height: 12),
 
-              //sign in button
+              //register button
               MyButton(
-                text: 'Login',
-                onTap: login,
+                text: 'Register',
+                onTap: register,
               ),
               SizedBox(height: 12),
 
@@ -83,15 +91,15 @@ class LoginPage extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Text(
-                    "Don't have an account?",
+                    "Already registered?",
                     style: TextStyle(
                       color: Theme.of(context).colorScheme.inversePrimary,
                     ),
                   ),
                   GestureDetector(
-                    onTap: onTap,
+                    onTap: () {},
                     child: Text(
-                      " Register here!",
+                      " Login!",
                       style: TextStyle(
                         fontWeight: FontWeight.bold,
                       ),
