@@ -97,7 +97,7 @@ class RegisterPage extends StatelessWidget {
                     ),
                   ),
                   GestureDetector(
-                    onTap: () {},
+                    onTap: onTap,
                     child: Text(
                       " Login!",
                       style: TextStyle(
