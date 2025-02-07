@@ -23,6 +23,11 @@ class MainScreen extends StatefulWidget {
   State<MainScreen> createState() => _MainScreenState();
 }
 
+TextEditingController taskController = TextEditingController();
+TextEditingController desController = TextEditingController();
+List<String> taskCard = [];
+String task = "";
+
 class _MainScreenState extends State<MainScreen> {
   //
   //function to open a text field box to add a new dialog
@@ -34,19 +39,17 @@ class _MainScreenState extends State<MainScreen> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             TextField(
+              controller: taskController,
               decoration: InputDecoration(
                 hintText: "Task",
-              ),
-            ),
-            TextField(
-              decoration: InputDecoration(
-                hintText: "Description",
               ),
             ),
             SizedBox(height: 10),
             TextButton(
               onPressed: () {
-                setState(() {});
+                setState(() {
+                  taskController = taskCard.add(task);
+                });
               },
               child: Text("Add"),
             ),
@@ -63,7 +66,7 @@ class _MainScreenState extends State<MainScreen> {
         onPressed: () {
           addTask(context);
         },
-        backgroundColor: Colors.amber[400],
+        backgroundColor: Colors.amber[500],
         child: Icon(
           Icons.add_task_outlined,
         ),
@@ -119,8 +122,7 @@ class _MyConatinerState extends State<MyConatiner> {
             crossAxisAlignment: CrossAxisAlignment.start,
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Text(widget.task),
-              Text(widget.description),
+              Text(""),
             ],
           ),
           Spacer(),
