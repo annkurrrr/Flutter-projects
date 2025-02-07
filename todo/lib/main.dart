@@ -66,7 +66,7 @@ class _MainScreenState extends State<MainScreen> {
         onPressed: () {
           addTask(context);
         },
-        backgroundColor: Colors.amber[500],
+        backgroundColor: Colors.amber[400],
         child: Icon(
           Icons.add_task_outlined,
         ),
