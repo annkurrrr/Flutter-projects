@@ -137,7 +137,9 @@ class _MyContainerState extends State<MyContainer> {
           ),
           Spacer(),
           IconButton(
-            onPressed: () {},
+            onPressed: () {
+              setState(() {});
+            },
             icon: Icon(Icons.delete),
           ),
         ],
