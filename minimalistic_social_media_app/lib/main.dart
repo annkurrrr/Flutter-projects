@@ -2,7 +2,6 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:minimalistic_social_media_app/auth/login_or_register.dart';
 import 'package:minimalistic_social_media_app/firebase_options.dart';
-import 'package:minimalistic_social_media_app/pages/login_page.dart';
 import 'package:minimalistic_social_media_app/themes/dark_mode.dart';
 import 'package:minimalistic_social_media_app/themes/light_mode.dart';
 
@@ -19,9 +18,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: LoginPage(
-        onTap: () {},
-      ),
+      home: LoginOrRegister(),
       theme: lightMode,
       darkTheme: darkMode,
     );

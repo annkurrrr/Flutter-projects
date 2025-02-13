@@ -35,27 +35,28 @@ class _RegisterPageState extends State<RegisterPage> {
     );
 
     //making sure passwords match
-    if (passwordController != confirmPasswordController) {
+    if (passwordController.text != confirmPasswordController.text) {
       //pop circular loading avatar
       Navigator.pop(context);
       //show error message to user
       displayMessageToUser("Passwords don't match", context);
       //try creating the user
-    }
-    try {
-      //create the user
-      UserCredential userCredential =
-          await FirebaseAuth.instance.createUserWithEmailAndPassword(
-        email: emailController.text,
-        password: passwordController.text,
-      );
-      //pop the circle
-      Navigator.pop(context);
-    } on FirebaseAuthException catch (e) {
-      //pop the circle
-      Navigator.pop(context);
-      //display error message to user
-      displayMessageToUser(e.code, context);
+    } else {
+      try {
+        //create the user
+        UserCredential userCredential =
+            await FirebaseAuth.instance.createUserWithEmailAndPassword(
+          email: emailController.text,
+          password: passwordController.text,
+        );
+        //pop the circle
+        Navigator.pop(context);
+      } on FirebaseAuthException catch (e) {
+        //pop the circle
+        Navigator.pop(context);
+        //display error message to user
+        displayMessageToUser(e.code, context);
+      }
     }
   }
 

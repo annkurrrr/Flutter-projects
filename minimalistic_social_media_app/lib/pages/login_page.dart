@@ -1,9 +1,11 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:minimalistic_social_media_app/components/botton.dart';
 import 'package:minimalistic_social_media_app/components/textfield.dart';
+import 'package:minimalistic_social_media_app/helpers/helper_functions.dart';
 
 // ignore: must_be_immutable
-class LoginPage extends StatelessWidget {
+class LoginPage extends StatefulWidget {
   final void Function()? onTap;
 
   LoginPage({
@@ -11,12 +13,42 @@ class LoginPage extends StatelessWidget {
     required this.onTap,
   });
 
+  @override
+  State<LoginPage> createState() => _LoginPageState();
+}
+
+class _LoginPageState extends State<LoginPage> {
   //text controllers
   TextEditingController emailController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
 
   //login method
-  void login() {}
+  void login() async {
+    showDialog(
+      context: context,
+      builder: (context) => Center(
+        child: CircularProgressIndicator(),
+      ),
+    );
+
+    //try sign in
+    try {
+      await FirebaseAuth.instance.signInWithEmailAndPassword(
+        email: emailController.text,
+        password: passwordController.text,
+      );
+      //pop loading circle
+      if (context.mounted) {
+        Navigator.pop(context);
+      }
+    }
+    //catch errors
+    on FirebaseAuthException catch (e) {
+      //pop loading circle
+      Navigator.pop(context);
+      displayMessageToUser(e.code, context);
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -89,7 +121,7 @@ class LoginPage extends StatelessWidget {
                     ),
                   ),
                   GestureDetector(
-                    onTap: onTap,
+                    onTap: widget.onTap,
                     child: Text(
                       " Register here!",
                       style: TextStyle(
