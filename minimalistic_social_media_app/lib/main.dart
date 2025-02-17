@@ -8,11 +8,17 @@ import 'package:minimalistic_social_media_app/pages/profile_page.dart';
 import 'package:minimalistic_social_media_app/pages/users_page.dart';
 import 'package:minimalistic_social_media_app/themes/dark_mode.dart';
 import 'package:minimalistic_social_media_app/themes/light_mode.dart';
+import 'dart:async';
 
-void main() async {
-  WidgetsFlutterBinding.ensureInitialized();
-  await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
-  runApp(const MyApp());
+void main() {
+  runZonedGuarded(() async {
+    WidgetsFlutterBinding.ensureInitialized();
+    await Firebase.initializeApp(
+        options: DefaultFirebaseOptions.currentPlatform);
+    runApp(const MyApp());
+  }, (error, stackTrace) {
+    print("Caught an error: $error");
+  });
 }
 
 class MyApp extends StatelessWidget {
@@ -22,9 +28,9 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: AuthPage(),
-      theme: lightMode,
-      darkTheme: darkMode,
+      home: AuthPage(), // Keeps authentication logic
+      theme: lightMode, // Keeps light theme
+      darkTheme: darkMode, // Keeps dark theme
       routes: {
         '/login_register_page': (context) => LoginOrRegister(),
         '/home_page': (context) => HomePage(),
