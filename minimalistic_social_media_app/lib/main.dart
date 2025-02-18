@@ -16,9 +16,7 @@ void main() {
     await Firebase.initializeApp(
         options: DefaultFirebaseOptions.currentPlatform);
     runApp(const MyApp());
-  }, (error, stackTrace) {
-    print("Caught an error: $error");
-  });
+  }, (error, stackTrace) {});
 }
 
 class MyApp extends StatelessWidget {
