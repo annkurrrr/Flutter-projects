@@ -1,5 +1,7 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:internspirit_hackathon/components/text_field.dart';
+import 'package:internspirit_hackathon/helper/display_mesg.dart';
 import 'package:internspirit_hackathon/pages/register_page.dart';
 
 class LoginPage extends StatefulWidget {
@@ -18,9 +20,21 @@ class _LoginPageState extends State<LoginPage> {
     showDialog(
       context: context,
       builder: (context) => Center(
-        child: CircularProgressIndicator(),
+        child: CircularProgressIndicator(
+          color: Colors.black,
+        ),
       ),
     );
+    try {
+      await FirebaseAuth.instance.signInWithEmailAndPassword(
+          email: emailController.text, password: passwordController.text);
+      if (context.mounted) {
+        Navigator.pop(context);
+      }
+    } on FirebaseAuthException catch (e) {
+      Navigator.pop(context);
+      displayMessageToUser(e.code, context);
+    }
   }
 
   @override
@@ -62,7 +76,9 @@ class _LoginPageState extends State<LoginPage> {
             ),
             SizedBox(height: 5),
             TextButton(
-              onPressed: () {},
+              onPressed: () {
+                login();
+              },
               child: Text(
                 "Login!",
                 style: TextStyle(
